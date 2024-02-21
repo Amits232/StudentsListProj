@@ -58,6 +58,9 @@ export default class CCList extends Component {
   savePersonOut = (index) => {
     let newPeople = this.state.people.map((person, i) => {
       if (i === index) {
+        if (person.editName === null) {
+          return { ...person, editing: false };
+        }
         return { ...person, name: person.editName, editing: false, editName: null };
       }
       return person;
